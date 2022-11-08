@@ -8,9 +8,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <header className="App-header">
-        <h1>Welcome!</h1>
-      </header>
+      <Router></Router>
     </div>
   );
 }
