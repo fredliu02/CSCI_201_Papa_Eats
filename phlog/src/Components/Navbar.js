@@ -24,7 +24,12 @@ function Navbar() {
         >
           <MenuIcon />
         </IconButton>
-        <Button sx={{ color: "white", fontSize: 20, fontWeight: "bold" }}>
+        <Button
+          sx={{ color: "white", fontSize: 20, fontWeight: "bold" }}
+          onClick={() => {
+            window.location.replace("/");
+          }}
+        >
           Phlog
         </Button>
       </AppBar>

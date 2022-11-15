@@ -8,6 +8,7 @@ import Login from "./Pages/Login/Login";
 function App() {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/Login" element={<Login />} />
