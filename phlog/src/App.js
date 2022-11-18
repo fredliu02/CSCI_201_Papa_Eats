@@ -1,17 +1,17 @@
 import * as React from "react";
-import { Routes, Link, Route, BrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
+import RestaurantPage from "./Pages/RestaurantPage/RestaurantPage";
 
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
+        <Route exact path="/Restaurant" element={<RestaurantPage />} />
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/Login" element={<Login />} />
       </Routes>
     </div>
   );
