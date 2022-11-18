@@ -8,6 +8,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Cuisines from "./Pages/Cuisines/Cuisines"
 import User from "./Pages/User/User"
+import RestaurantPage from "./Pages/RestaurantPage/RestaurantPage"
 import OtherUser from "./Pages/OtherUser/OtherUser"
 import Guest from "./Pages/Guest/Guest"
 
