@@ -1,6 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Navbar from "../../Components/Navbar";
+import Navbar from "../../Components/Navbar/Navbar";
 import TextField from "@mui/material/TextField";
 import { Card, CardActions, CardContent, Typography } from "@mui/material";
 

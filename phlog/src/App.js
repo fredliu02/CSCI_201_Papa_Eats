@@ -1,17 +1,27 @@
 import * as React from "react";
 import { Routes, Link, Route, BrowserRouter } from "react-router-dom";
+
 import "./App.css";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
+import AuthNavbar from "./Components/AuthNavbar/AuthNavbar";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import Cuisines from "./Pages/Cuisines/Cuisines"
+import User from "./Pages/User/User"
+import OtherUser from "./Pages/OtherUser/OtherUser"
+import Guest from "./Pages/Guest/Guest"
 
 function App() {
   return (
     <div>
-      <Navbar />
+      <AuthNavbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/Login" element={<Login />} />
+        <Route exact path="/Cuisines" element={<Cuisines />} />
+        <Route exact path="/User/:userName" element={<User />} />
+        <Route exact path="/OtherUser/:userName" element={<OtherUser />}/>
+        <Route exact path="/Guest" element={<Guest />} />
       </Routes>
     </div>
   );
