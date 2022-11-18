@@ -16,6 +16,7 @@ function App() {
     <div>
       <AuthNavbar />
       <Routes>
+        <Route exact path="/Restaurant" element={<RestaurantPage />} />
         <Route exact path="/" element={<Home />} />
         <Route exact path="/Login" element={<Login />} />
         <Route exact path="/Cuisines" element={<Cuisines />} />
