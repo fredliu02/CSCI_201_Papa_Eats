@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -18,27 +19,42 @@ import { useNavigate } from "react-router-dom";
 function ReviewPage() {
     const date = new Date();
     const navigate = useNavigate();
-    const showTime = date.getHours() 
+    var state = {
+        val: ""
+      };
+    const [firstName, setFirstName] = useState('');
+
+    const showTime = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+" "
+        + date.getHours() 
         + ':' + date.getMinutes() 
         + ":" + date.getSeconds();
     var jsonData = {
-        "reviewID":100,
-        "userID": 0,
-        "restID":5,
-        "textRev":"Add review here",
+        "userID": 3,
+        "restID":2,
+        "textRev":firstName,
         "timePosted":showTime
     }
 
+
     function handleClick() {
+        //console.log(this.state.val);
+        fetch("https://future-badge-366719.uw.r.appspot.com/api/reviews",
+        {  // Enter your IP address here
+
+            method: 'POST', 
+            mode: 'cors', 
+            headers: new Headers({'content-type': 'application/json'}),
+            body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
+      
+          })
+        // fetch("https://jsonplaceholder.typicode.com/posts")
+        
+        .then((response) => response.json())
+        .then((json) => {
+        console.log(JSON.stringify(jsonData));
+        //                 setData(json);
+        })
     
-    // Send data to the backend via POST
-    fetch('localhost:8081/api/restaurants/3/reviews', {  // Enter your IP address here
-
-      method: 'POST', 
-      mode: 'cors', 
-      body: JSON.stringify(jsonData) // body data type must match "Content-Type" header
-
-    });
     navigate(-1); //navigate back to restaurant page
   }
     
@@ -52,9 +68,12 @@ function ReviewPage() {
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <FormControl sx={{  width: 0.8  }} variant="filled" className="w-50">
             <InputLabel>Write review here...</InputLabel>
+            {/* value={this.state.val}
+            onChange={e => this.setState({ val: e.target.value })} */}
             <FilledInput
                 // id="filled-adornment-amount"
                 multiline rows={15}
+                onChange={e => setFirstName(e.target.value)}
             />
             
             </FormControl>
