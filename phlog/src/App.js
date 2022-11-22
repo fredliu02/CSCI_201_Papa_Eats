@@ -19,7 +19,7 @@ import OtherPage from "./Pages/OtherPage/OtherPage";
 function App() {
   return (
     <div>
-      <Navbar />
+      <Navbar />ph
       <Routes>
         <Route exact path="/Restaurant" element={<RestaurantPage />} />
         <Route exact path="/" element={<Home />} />
