@@ -1,10 +1,21 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+
+import { Routes, Route, useNavigate } from "react-router-dom";
+
 import { Card, CardContent, Grid } from "@mui/material";
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  const navigateToSignUp = () => {
+    // 👇️ navigate to /contacts
+    navigate('/SignUp');
+  };
+
+
   return (
     <div>
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
@@ -65,7 +76,7 @@ function Home() {
                     <Button sx={{ marginRight: "2%" }} variant="contained">
                       Login
                     </Button>
-                    <Button variant="contained">Signup</Button>
+                    <Button onClick={navigateToSignUp} variant="contained">Signup</Button>
                   </div>
                 </CardContent>
               </Card>
