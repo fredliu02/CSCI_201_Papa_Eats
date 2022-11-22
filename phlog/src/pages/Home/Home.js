@@ -1,8 +1,9 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+
 import { Routes, Route, useNavigate } from "react-router-dom";
+
 import { Card, CardContent, Grid } from "@mui/material";
 
 function Home() {
@@ -18,8 +19,8 @@ function Home() {
   return (
     <div>
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
-        <Grid container>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} style={{ textAlign: "center"}}>
             <h1>Welcome to Phlog!</h1>
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>

@@ -1,7 +1,9 @@
 import * as React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Link, Route, BrowserRouter } from "react-router-dom";
+
 import "./App.css";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
+import AuthNavbar from "./Components/AuthNavbar/AuthNavbar";
 import Home from "./Pages/Home/Home";
 import RestaurantPage from "./Pages/RestaurantPage/RestaurantPage";
 import HomePage from "./Pages/HomePage/HomePage";
@@ -19,7 +21,7 @@ import OtherPage from "./Pages/OtherPage/OtherPage";
 function App() {
   return (
     <div>
-      <Navbar />ph
+      <Navbar />
       <Routes>
         <Route exact path="/Restaurant" element={<RestaurantPage />} />
         <Route exact path="/" element={<Home />} />
