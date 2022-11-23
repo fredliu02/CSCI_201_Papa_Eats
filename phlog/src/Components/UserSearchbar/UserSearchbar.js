@@ -60,9 +60,9 @@ const UserSearchbar = ({searchQuery, setSearchQuery}) => {
                     onKeyDown={keyDownHandler}
                     size="small"
                     sx={{
-                        width: '75%',
-                        position:'fixed',
-                        top:55,
+                        align: 'center',
+                        width: '500',
+                        position:'relative',
                     }}
                 />
             </Box>

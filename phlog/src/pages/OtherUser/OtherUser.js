@@ -12,10 +12,18 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 
 function OtherUser(props) {
   const [searchQuery, setSearchQuery] = useState("");
   const { userName } = useParams();
+
+  const numbers = [1, 2, 3, 4, 5];
+  const listItems = numbers.map((numbers) => (
+    // <li>
+    <RestaurantReview name="Frederick Liu" date="Sep 5, 2022" review="Food was yum." />
+    // </li>
+  ));
   
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.primaryLight,
@@ -26,27 +34,36 @@ function OtherUser(props) {
   }));
 
   return (
-    <div class='TopDiv'>
-      <div class='ChildDiv'>
-        <Button startIcon={<ArrowBackIcon/>} 
+    <div>
+      <Box sx={{
+        top: 65,
+        left: 140,
+        position:'relative',
+        width:'80%',
+        display: 'inline-block',
+      }}>
+        <Button component="Box" startIcon={<ArrowBackIcon/>} 
           sx={{
-            top: 60,
-            left: 130,
-            color: '1976d2',
+            left: 90,
+            verticalAlign: 'top',
+            display: 'inline',
           }}
           onClick={() => {window.location.replace("/User/TestUser");}}
         >
         </Button>
-      </div>
-      <div class='ChildDiv'>
-        <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
-      </div>
+        <UserSearchBar component="Box" searchQuery={searchQuery} setSearchQuery={setSearchQuery} 
+        sx={{
+          top: 65,
+          bottom: 10,
+          display: 'inline-block',
+        }}/>
+      </Box>
       <div>
         <Box
           sx={{
-            top:120,
-            left:140,
-            position:'fixed',
+            top: 65,
+            left: 140,
+            position:'relative',
             width:'80%',
           }}
         >
@@ -56,20 +73,11 @@ function OtherUser(props) {
               sx={{
                 fontSize: 60, fontWeight: "bold" 
               }}
-            >
-             {userName}
-            </Grid>
-            <Grid reviews>
-              <Stack spacing={2}>
-                <Item>Review 1</Item>
-                <Item>Review 2</Item>
-                <Item>Review 3</Item>
-                <Item>Review 4</Item>
-                <Item>Review 5</Item>
-                <Item>Review 6</Item>
-              </Stack>
+              >
+              { userName } {/* future, use api call to get username */}
             </Grid>
           </Grid>
+          {listItems}
         </Box>
       </div>
     </div>

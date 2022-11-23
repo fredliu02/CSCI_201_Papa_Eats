@@ -17,7 +17,7 @@ function RestaurantReview(props) {
       sx={{
         marginLeft: "15%",
         marginRight: "15%",
-        marginTop: "3%",
+        marginTop: "1%",
         borderRadius: "25px",
       }}
     >

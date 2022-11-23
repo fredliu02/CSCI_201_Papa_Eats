@@ -11,13 +11,12 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { MoreVert } from "@mui/icons-material";
 
-function reviewCard(props) {
+function ReviewCard(props) {
   return (
     <Card
       sx={{
         marginLeft: "15%",
         marginRight: "15%",
-        marginTop: "3%",
         borderRadius: "25px",
       }}
     >
@@ -50,4 +49,4 @@ function reviewCard(props) {
   );
 }
 
-export default reviewCard;
+export default ReviewCard;

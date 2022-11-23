@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import RestaurantReview from "../../Components/RestaurantReview";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 
 function RestaurantPage() {
   const numbers = [1, 2, 3, 4, 5];
