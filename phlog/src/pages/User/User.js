@@ -29,6 +29,7 @@ function User() {
 
   return (
     <div>
+      <AuthNavbar/>
       <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <Box
         sx={{

@@ -6,6 +6,7 @@ import { Card, CardContent, Grid } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function HomePage() {
   const { username } = useParams();
@@ -52,6 +53,7 @@ function HomePage() {
 
   return (
     <div>
+      <AuthNavbar/>
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
         <Grid container>
           <Grid item xs={12} style={{ textAlign: "center" }}>

@@ -2,8 +2,6 @@ import * as React from "react";
 import { Routes, Link, Route, BrowserRouter } from "react-router-dom";
 
 import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
-import AuthNavbar from "./Components/AuthNavbar/AuthNavbar";
 import Home from "./Pages/Home/Home";
 import RestaurantPage from "./Pages/RestaurantPage/RestaurantPage";
 import HomePage from "./Pages/HomePage/HomePage";

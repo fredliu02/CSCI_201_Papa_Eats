@@ -122,7 +122,10 @@ function Home() {
                   </div>
                 </CardContent>
               </Card>
-              <Button sx={{ marginLeft: "20%" }} variant="text">
+              <Button 
+                onClick={() => navigate(`/%GUEST%/Homepage`)}
+                sx={{ marginLeft: "20%" }} 
+                variant="text">
                 Continue as Guest
               </Button>
             </div>
