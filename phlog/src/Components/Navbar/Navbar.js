@@ -1,9 +1,8 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../../theme';
-
+import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { theme } from "../../theme";
 import Button from "@mui/material/Button";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -11,7 +10,7 @@ import Box from "@mui/material/Box";
 function Navbar() {
   const [inBar, openBar] = useState(false);
   return (
-    <ThemeProvider theme = {theme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           sx={{
@@ -21,7 +20,7 @@ function Navbar() {
           }}
         >
           <Button
-            sx={{color:"white", fontSize: 20, fontWeight: "bold" }}
+            sx={{ color: "white", fontSize: 20, fontWeight: "bold" }}
             onClick={() => {
               window.location.replace("/");
             }}

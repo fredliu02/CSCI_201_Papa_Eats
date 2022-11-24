@@ -1,26 +1,58 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-
-import { Routes, Route, useNavigate } from "react-router-dom";
-
+import Box from "@mui/material/Box";
+import Navbar from "../../Components/Navbar/Navbar";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Grid } from "@mui/material";
 
 function Home() {
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const apiPost = async (username, password) => {
+    // if (username.length == 0 || password.length == 0) {
+    //   throw Error("empty values");
+    // }
+    const response = await fetch(
+      "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
+        username,
+      {
+        Method: "GET",
+        Headers: {
+          Accept: "application.json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    let data = null;
+    try {
+      data = await response.json();
+    } catch (err) {
+      console.log(err);
+      alert("failed to log in: invalid username or password!");
+      return;
+    }
+
+    if (username !== data.username || password != data.password) {
+      alert("mismatch");
+    } else {
+      navigate(`/${username}/Homepage`);
+    }
+  };
 
   const navigateToSignUp = () => {
     // 👇️ navigate to /contacts
-    navigate('/SignUp');
+    navigate("/SignUp");
   };
-
 
   return (
     <div>
+      <Navbar />
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
         <Grid container spacing={1}>
-          <Grid item xs={12} style={{ textAlign: "center"}}>
+          <Grid item xs={12} style={{ textAlign: "center" }}>
             <h1>Welcome to Phlog!</h1>
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
@@ -60,12 +92,16 @@ function Home() {
                     sx={{ marginBottom: "5%" }}
                     id="outlined-basic"
                     label="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     variant="outlined"
                   />
                   <TextField
                     sx={{ marginBottom: "5%" }}
                     id="outlined-basic"
                     label="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     variant="outlined"
                   />
                   <div
@@ -73,10 +109,16 @@ function Home() {
                       marginBottom: "5%",
                     }}
                   >
-                    <Button sx={{ marginRight: "2%" }} variant="contained">
+                    <Button
+                      onClick={() => apiPost(username, password)}
+                      sx={{ marginRight: "2%" }}
+                      variant="contained"
+                    >
                       Login
                     </Button>
-                    <Button onClick={navigateToSignUp} variant="contained">Signup</Button>
+                    <Button onClick={navigateToSignUp} variant="contained">
+                      Signup
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

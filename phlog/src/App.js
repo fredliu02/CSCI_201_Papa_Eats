@@ -16,25 +16,30 @@ import JapanesePage from "./Pages/JapanesePage/JapanesePage";
 import IndianPage from "./Pages/IndianPage/IndianPage";
 import CoffeePage from "./Pages/CoffeePage/CoffeePage";
 import OtherPage from "./Pages/OtherPage/OtherPage";
-
+import ErrorPage from "./Pages/Errorpage/ErrorPage";
 
 function App() {
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route exact path="/Restaurant" element={<RestaurantPage />} />
+        <Route
+          exact
+          path="/:username/R/:restaurant"
+          element={<RestaurantPage />}
+        />
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/HomePage" element={<HomePage />} />
-        <Route exact path="/SignUp" element={<SignUp />} />
-        <Route exact path="/American" element={<AmericanPage />} />
-        <Route exact path="/Italian" element={<ItalianPage />} />
-        <Route exact path="/Mexican" element={<MexicanPage />} />
-        <Route exact path="/Chinese" element={<ChinesePage />} />
-        <Route exact path="/Japanese" element={<JapanesePage />} />
-        <Route exact path="/Indian" element={<IndianPage />} />
-        <Route exact path="/Coffee" element={<CoffeePage />} />
-        <Route exact path="/Other" element={<OtherPage />} />
+        <Route exact path="/Signup" element={<SignUp />} />
+        <Route exact path="/:username/HomePage" element={<HomePage />} />
+        <Route exact path="/:username/SignUp" element={<SignUp />} />
+        <Route exact path="/:username/American" element={<AmericanPage />} />
+        <Route exact path="/:username/Italian" element={<ItalianPage />} />
+        <Route exact path="/:username/Mexican" element={<MexicanPage />} />
+        <Route exact path="/:username/Chinese" element={<ChinesePage />} />
+        <Route exact path="/:username/Japanese" element={<JapanesePage />} />
+        <Route exact path="/:username/Indian" element={<IndianPage />} />
+        <Route exact path="/:username/Coffee" element={<CoffeePage />} />
+        <Route exact path="/:username/Other" element={<OtherPage />} />
+        <Route exact path="/Error" element={<ErrorPage />} />
       </Routes>
     </div>
   );
