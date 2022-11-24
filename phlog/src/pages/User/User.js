@@ -10,10 +10,18 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 
 function User() {
   const [searchQuery, setSearchQuery] = useState("");
   const { userName } = useParams();
+
+  const numbers = [1, 2, 3, 4, 5];
+  const listItems = numbers.map((numbers) => (
+    // <li>
+    <RestaurantReview name="Frederick Liu" date="Sep 5, 2022" review="Food was yum." />
+    // </li>
+  ));
   
   if(!useParams())
     window.location.replace("/Guest");
@@ -29,15 +37,17 @@ function User() {
 
   return (
     <div>
-      <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
       <Box
         sx={{
-          top:120,
+          top:65,
           left:140,
-          position:'fixed',
+          position:'relative',
           width:'80%',
         }}
       >
+        <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}
+          sx={{bottom: 10}}
+        />
         <Grid info>
           <Grid username 
             xs={12}
@@ -47,17 +57,8 @@ function User() {
           >
             { userName } {/* future, use api call to get username */}
           </Grid>
-          <Grid reviews> {/* future, use api to get name*/}
-            <Stack spacing={2}>
-              <Item>Review 1</Item>
-              <Item>Review 2</Item>
-              <Item>Review 3</Item>
-              <Item>Review 4</Item>
-              <Item>Review 5</Item>
-              <Item>Review 6</Item>
-            </Stack>
-          </Grid>
         </Grid>
+        {listItems}
       </Box>
     </div>
   );

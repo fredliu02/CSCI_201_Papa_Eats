@@ -11,7 +11,7 @@ const SidebarMenu = ({ inBar }) => {
             sx={{color:"white", fontSize: 15, fontWeight: "bold", text: "left"}}
 
             onClick={() => {
-              window.location.replace("/Cuisines");
+              window.location.replace("/HomePage");
             }}
           >
             Cuisines

@@ -25,11 +25,6 @@ function RestaurantReview(props) {
         sx={{
           backgroundColor: "#8cdcff",
         }}
-        action={
-          <IconButton onClick={null}>
-            <MoreVert />
-          </IconButton>
-        }
         avatar={<Avatar>{props.name.substring(0, 1)}</Avatar>}
         title={props.name}
         subheader={"Date Posted: " + props.date}
@@ -39,11 +34,6 @@ function RestaurantReview(props) {
         <h5>{props.review}</h5>
         <Typography></Typography>
       </CardContent>
-      <CardActions sx={{ paddingLeft: "2%", paddingRight: "2%" }}>
-        <IconButton>
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
       <br />
     </Card>
   );

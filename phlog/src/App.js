@@ -16,12 +16,14 @@ import JapanesePage from "./Pages/JapanesePage/JapanesePage";
 import IndianPage from "./Pages/IndianPage/IndianPage";
 import CoffeePage from "./Pages/CoffeePage/CoffeePage";
 import OtherPage from "./Pages/OtherPage/OtherPage";
+import User from "./Pages/User/User"
+import OtherUser from "./Pages/OtherUser/OtherUser"
 
 
 function App() {
   return (
     <div>
-      <Navbar />
+      <AuthNavbar />
       <Routes>
         <Route exact path="/Restaurant" element={<RestaurantPage />} />
         <Route exact path="/" element={<Home />} />
@@ -35,6 +37,8 @@ function App() {
         <Route exact path="/Indian" element={<IndianPage />} />
         <Route exact path="/Coffee" element={<CoffeePage />} />
         <Route exact path="/Other" element={<OtherPage />} />
+        <Route exact path="/User/:userName" element={<User/>} />
+        <Route exact path="/OtherUser/:userName" element={<OtherUser/>} />
       </Routes>
     </div>
   );
