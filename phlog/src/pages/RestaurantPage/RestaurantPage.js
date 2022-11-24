@@ -111,13 +111,6 @@ function RestaurantPage() {
       return false;
     }
   };
-  const navbar = (username) => {
-    if (username === ":GUEST:") {
-      return <Navbar />;
-    } else {
-      return <AuthNavbar />;
-    }
-  };
 
   return (
     <div>
