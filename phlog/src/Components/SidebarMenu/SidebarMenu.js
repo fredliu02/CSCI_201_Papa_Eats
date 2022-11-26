@@ -3,15 +3,18 @@ import Button from "@mui/material/Button";
 
 import { StyledSidebarMenu } from './SidebarMenu.styled';
 import { bool } from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 
-const SidebarMenu = ({ inBar }) => {
+const SidebarMenu = ({ inBar, username }) => {
+  const navigate = useNavigate();
+
   return (
     <StyledSidebarMenu inBar={inBar}>
       <Button
             sx={{color:"white", fontSize: 15, fontWeight: "bold", text: "left"}}
 
             onClick={() => {
-              window.location.replace("/Cuisines");
+              navigate("/" + username + "/HomePage")
             }}
           >
             Cuisines
@@ -21,7 +24,10 @@ const SidebarMenu = ({ inBar }) => {
             sx={{color:"white", fontSize: 15, fontWeight: "bold", text: "left"}}
 
             onClick={() => {
-              window.location.replace("/User/TestUser");
+              if(username === ":GUEST:")
+                navigate("/" + username + "/Guest")
+              else
+                navigate("/" + username + "/User")
             }}
           >
             Users

@@ -2,9 +2,8 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import RestaurantReview from "../../Components/RestaurantReview";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 import { Button } from "@mui/material";
-import Navbar from "../../Components/Navbar/Navbar";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function RestaurantPage() {

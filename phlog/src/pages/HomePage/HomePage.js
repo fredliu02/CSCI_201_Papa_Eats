@@ -6,52 +6,54 @@ import { Card, CardContent, Grid } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function HomePage() {
   const { username } = useParams();
   const navigate = useNavigate();
   const navigateToAmerican = () => {
     // 👇️ navigate to /contacts
-    navigate("/American");
+    navigate("/" + username + "/American");
   };
 
   const navigateToItalian = () => {
     // 👇️ navigate to /contacts
-    navigate("/Italian");
+    navigate("/" + username + "/Italian");
   };
 
   const navigateToMexican = () => {
     // 👇️ navigate to /contacts
-    navigate("/Mexican");
+    navigate("/" + username + "/Mexican");
   };
 
   const navigateToChinese = () => {
     // 👇️ navigate to /contacts
-    navigate("/Chinese");
+    navigate("/" + username + "/Chinese");
   };
 
   const navigateToJapanese = () => {
     // 👇️ navigate to /contacts
-    navigate("/Japanese");
+    navigate("/" + username + "/Japanese");
   };
 
   const navigateToIndian = () => {
     // 👇️ navigate to /contacts
-    navigate("/Indian");
+    navigate("/" + username + "/Indian");
   };
 
   const navigateToCoffee = () => {
     // 👇️ navigate to /contacts
-    navigate("/Coffee");
+    navigate("/" + username + "/Coffee");
   };
 
   const navigateToOther = () => {
     // 👇️ navigate to /contacts
-    navigate("/Other");
+    navigate("/" + username + "/Other");
   };
 
   return (
     <div>
+      <AuthNavbar username={username}/>
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
         <Grid container>
           <Grid item xs={12} style={{ textAlign: "center" }}>

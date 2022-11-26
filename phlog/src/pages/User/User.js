@@ -2,62 +2,109 @@ import * as React from "react";
 
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Paper from '@mui/material/Paper';
 
-import { styled } from '@mui/material/styles';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
+import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function User() {
   const [searchQuery, setSearchQuery] = useState("");
-  const { userName } = useParams();
+  const { username } = useParams();
+  const navigate = useNavigate();
+
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    getReviews(username);
+  });
+  const getReviews = async (username) => {
+    let vef = await verify(username);
+    if (!vef) {
+      navigate("/Error");
+      return;
+    }
+    
+    let data = null;
+    const reviews = await fetch(
+      `https://future-badge-366719.uw.r.appspot.com/api/users/reviews/${username}`,
+      {
+        Method: "GET",
+        Headers: {
+          Accept: "application.json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    try {
+      data = await reviews.json();
+    } catch (err) {
+      console.log(err);
+      alert("failed to retrieve reivews!");
+      return;
+    }
+    setReviews(data);
+  };
+
+  const verify = async (username) => {
+    if (username === ":GUEST:") {
+      return true;
+    }
+    const response = await fetch(
+      "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
+        username,
+      {
+        Method: "GET",
+        Headers: {
+          Accept: "application.json",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    let data = null;
+    try {
+      data = await response.json();
+      return true;
+    } catch (err) {
+      console.log(err);
+      return false;
+    }
+  };
+
+  const numbers = [1, 2, 3, 4, 5];
+  const listItems = numbers.map((numbers) => (
+    // <li>
+    <RestaurantReview name="Frederick Liu" date="Sep 5, 2022" review="Food was yum." />
+    // </li>
+  ));
   
-  if(!useParams())
-    window.location.replace("/Guest");
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.primaryLight,
-    padding: theme.spacing(1),
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-    minHeight: 60
-  }));
-
-
   return (
     <div>
-      <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <AuthNavbar username={username}/>
       <Box
         sx={{
-          top:120,
+          top:65,
           left:140,
-          position:'fixed',
+          position:'relative',
           width:'80%',
         }}
       >
-        <Grid info>
-          <Grid username 
-            xs={12}
-            sx={{
-              fontSize: 60, fontWeight: "bold" 
-            }}
-          >
-            { userName } {/* future, use api call to get username */}
-          </Grid>
-          <Grid reviews> {/* future, use api to get name*/}
-            <Stack spacing={2}>
-              <Item>Review 1</Item>
-              <Item>Review 2</Item>
-              <Item>Review 3</Item>
-              <Item>Review 4</Item>
-              <Item>Review 5</Item>
-              <Item>Review 6</Item>
-            </Stack>
-          </Grid>
-        </Grid>
+        <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} username={username}
+          sx={{bottom: 10}}
+        />
+        <h1 style={{ width: "100%", textAlign: "center", fontSize: 45}}>{username}</h1>
+        <ul>
+          {reviews.map((review) => (
+            <RestaurantReview
+              name={String(review.username)}
+              date={String(review.timePosted)}
+              review={String(review.textRev)}
+            />
+          ))}
+        </ul>
+        <h2 style={{ width: "100%", textAlign: "center" }}>You've reached the end of your reviews. Write some more to see them here!</h2>
       </Box>
     </div>
   );

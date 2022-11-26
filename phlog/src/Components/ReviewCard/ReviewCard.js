@@ -10,7 +10,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import { Person } from "@mui/icons-material";
 
-function reviewCard(props) {
+function ReviewCard(props) {
   return (
     <Card
       sx={{
@@ -47,4 +47,4 @@ function reviewCard(props) {
   );
 }
 
-export default reviewCard;
+export default ReviewCard;
