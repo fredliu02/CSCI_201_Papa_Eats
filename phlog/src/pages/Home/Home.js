@@ -93,7 +93,7 @@ function Home() {
                     id="outlined-basic"
                     label="Username"
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(info) => setUsername(info.target.value)}
                     variant="outlined"
                   />
                   <TextField
@@ -101,7 +101,7 @@ function Home() {
                     id="outlined-basic"
                     label="Password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(info) => setPassword(info.target.value)}
                     variant="outlined"
                   />
                   <div
