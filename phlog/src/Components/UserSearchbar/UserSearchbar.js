@@ -1,47 +1,65 @@
 import * as React from 'react';
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import OtherUser from '../../Pages/OtherUser/OtherUser';
-import { rootShouldForwardProp } from '@mui/material/styles/styled';
+import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
+const UserSearchbar = ({searchQuery, setSearchQuery, username}) => {
+    const navigate = useNavigate();
 
-const UserSearchbar = ({searchQuery, setSearchQuery}) => {
-    const data = [
-        "Paris",
-        "London",
-        "New York",
-        "Tokyo",
-        "Berlin",
-        "Buenos Aires",
-        "Cairo",
-        "Canberra",
-        "Rio de Janeiro",
-        "Dublin"
-    ];
+    const validate = async (searchQuery) => {
+        const response = await fetch(
+            "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
+              searchQuery,
+            {
+              Method: "GET",
+              Headers: {
+                Accept: "application.json",
+                "Content-Type": "application/json",
+              },
+            }
+        );
+        let data = null;
+        try {
+            data = await response.json();
+        } catch (err) {
+            console.log("couldn't find user")
+            return false;
+        }
+
+        console.log("successful search validation")
+        return true;
+    }
     
-    const filterData = () => {
+    const filterData = async () => {
         console.log("in data filtration")
         console.log(searchQuery)
-        console.log(data)
-        if (!searchQuery) {
+        if (!searchQuery) 
           return false;
-        } else {
-          return data.includes(searchQuery);
+        else if (searchQuery === username)
+            return false;
+        else{
+            let val = await validate(searchQuery);
+            if(val){
+                console.log("pre-route")
+                route();
+            }
+            else{
+                console.log("not routing")
+                return;
+            }
         }
     };
     
     const route = () => {
-        window.location.replace("/OtherUser/" + searchQuery);
-        return
+        navigate("/" + username + "/" + searchQuery + "/OtherUser")
+        return;
     }
     
     const keyDownHandler = event => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            if(filterData()){
-                console.log("pre-route")
-                route()
-            }
+            filterData();
         }
     }
 
@@ -60,9 +78,9 @@ const UserSearchbar = ({searchQuery, setSearchQuery}) => {
                     onKeyDown={keyDownHandler}
                     size="small"
                     sx={{
-                        width: '75%',
-                        position:'fixed',
-                        top:55,
+                        align: 'center',
+                        width: '500',
+                        position:'relative',
                     }}
                 />
             </Box>

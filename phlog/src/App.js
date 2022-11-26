@@ -15,6 +15,9 @@ import IndianPage from "./Pages/IndianPage/IndianPage";
 import CoffeePage from "./Pages/CoffeePage/CoffeePage";
 import OtherPage from "./Pages/OtherPage/OtherPage";
 import ErrorPage from "./Pages/Errorpage/ErrorPage";
+import User from "./Pages/User/User";
+import Guest from "./Pages/Guest/Guest";
+import OtherUser from "./Pages/OtherUser/OtherUser";
 
 function App() {
   return (
@@ -37,6 +40,9 @@ function App() {
         <Route exact path="/:username/Indian" element={<IndianPage />} />
         <Route exact path="/:username/Coffee" element={<CoffeePage />} />
         <Route exact path="/:username/Other" element={<OtherPage />} />
+        <Route exact path ="/:username/User" element={<User />} />
+        <Route exact path ="/:username/Guest" element={<Guest />} />
+        <Route exact path ="/:username/:search/OtherUser" element={<OtherUser />} />
         <Route exact path="/Error" element={<ErrorPage />} />
       </Routes>
     </div>

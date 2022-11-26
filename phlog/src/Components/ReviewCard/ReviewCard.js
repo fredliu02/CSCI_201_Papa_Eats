@@ -11,7 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { MoreVert } from "@mui/icons-material";
 
-function reviewCard(props) {
+function ReviewCard(props) {
   return (
     <Card
       sx={{
@@ -50,4 +50,4 @@ function reviewCard(props) {
   );
 }
 
-export default reviewCard;
+export default ReviewCard;

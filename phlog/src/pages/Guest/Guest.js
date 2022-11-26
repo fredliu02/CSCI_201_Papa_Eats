@@ -4,25 +4,30 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
+import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
 
 function Guest() {
+  const { username } = useParams();
   const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <div>
-      <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
+      <AuthNavbar username={username}/>
       <Box
         sx={{
-          top:120,
+          top:65,
           left:140,
-          position:'fixed',
+          position:'relative',
           width:'80%',
         }}
       >
+        <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} username={username}
+          sx={{bottom: 10}}
+        />
         <Grid info>
           <Grid guestname 
             xs={12}
