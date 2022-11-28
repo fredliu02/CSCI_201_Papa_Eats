@@ -8,8 +8,7 @@ import {
   Avatar,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import { MoreVert } from "@mui/icons-material";
+import { Person } from "@mui/icons-material";
 
 function ReviewCard(props) {
   return (
@@ -27,24 +26,22 @@ function ReviewCard(props) {
         }}
         action={
           <IconButton onClick={null}>
-            <MoreVert />
+            <Person />
           </IconButton>
         }
-        avatar={<Avatar>{props.name.substring(0,1)}</Avatar>}
+        avatar={
+          <Avatar sx={{ backgroundColor: "#6665DD" }}>
+            {props.name.substring(0, 1)}
+          </Avatar>
+        }
         title={props.name}
         subheader={"Date Posted: " + props.date}
       />
       <CardContent sx={{ paddingLeft: "2%", paddingRight: "2%" }}>
         <h2>{props.restaurant}</h2>
         <h3>Review:</h3>
-        <h5>{props.review}</h5>
-        <Typography></Typography>
+        <Typography>{props.review}</Typography>
       </CardContent>
-      <CardActions sx={{ paddingLeft: "2%", paddingRight: "2%" }}>
-        <IconButton>
-          <FavoriteIcon />
-        </IconButton>
-      </CardActions>
       <br />
     </Card>
   );

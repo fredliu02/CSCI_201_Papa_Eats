@@ -113,7 +113,7 @@ function RestaurantPage() {
 
   return (
     <div>
-      <AuthNavbar />
+      <AuthNavbar username={username}/>
       <div
         style={{
           marginTop: "5%",

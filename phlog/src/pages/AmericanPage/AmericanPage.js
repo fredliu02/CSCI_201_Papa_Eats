@@ -1,18 +1,21 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { Card, CardContent, Grid } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "@mui/material/Button";
+import Paper from '@mui/material/Paper';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+import { Grid } from "@mui/material";
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-
-
+import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 function AmericanPage() {
-
+    const { username } = useParams();
     const [data, setData] = useState([]);
+    const navigate = useNavigate();
+
     const apiGet = () => {
         fetch("https://future-badge-366719.uw.r.appspot.com/api/restaurants/cuisine/American")
             // fetch("https://jsonplaceholder.typicode.com/posts")
@@ -26,32 +29,45 @@ function AmericanPage() {
 
     return (
         <div>
-            <Box sx={{ flexGrow: 1, margin: "10%" }}>
+            <AuthNavbar username={username}/>
+            <Box sx={{ flexGrow: 1, marginTop: "2%"}}>
                 <Grid container>
                     <Grid item xs={12} style={{ textAlign: "center" }}>
-                        <h1> American Cuisine </h1>
+                        <h1> Welcome to the American Cuisine Page! </h1>
+                        <h4> Click to display restaurants below:</h4>
+                        <Button onClick={apiGet} variant="contained">
+                            Load American Restaurants
+                        </Button>
                     </Grid>
-                    <Grid item xs={12} style={{ textAlign: "center" }}>
-                        <h4>
-                            Click to display American Food Below
-                            <br />
-
-                            <button onClick={apiGet}> Load American Cuisines</button>
-
-                            <br />
-
-                            <div>
-                                <ul>
-                                    {data.map((item) => (
-
-                                        <li key={item.id}>{item.name}</li>
-
-                                    ))}
-                                </ul>
-
-                            </div>
-
-                        </h4>
+                    <Grid item xs={12}>        
+                            <ul>
+                                {data.map((item) => (  
+                                    <Paper 
+                                        elevation={1} 
+                                        sx={{
+                                            marginLeft: "25%",
+                                            marginRight: "25%",
+                                            marginTop: "1%",
+                                            borderRadius: "25px",
+                                            height: "60px",
+                                            backgroundColor: "#8cdcff",
+                                        }}
+                                    >          
+                                        <br/>                            
+                                        <div style={{display: "inline-block", marginLeft: "20px"}}>
+                                            {item.name}
+                                            <Button startIcon={<ArrowForwardIcon/>} 
+                                                onClick={() => {navigate("/" + username + "/R/" + item.name)}}
+                                            >
+                                            </Button>
+                                        </div>
+                                        <br/>
+                                    </Paper>
+            
+                                    // <li key={item.id}>{item.name}</li>
+                                ))}
+                                 <br/>
+                             </ul>
                     </Grid>
                 </Grid>
             </Box>
