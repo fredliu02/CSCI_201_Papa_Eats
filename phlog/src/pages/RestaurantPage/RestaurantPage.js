@@ -2,7 +2,7 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
+import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 import { Button } from "@mui/material";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
@@ -127,7 +127,7 @@ function RestaurantPage() {
 
         <ul>
           {reviews.map((review) => (
-            <RestaurantReview
+            <ReviewCard
               name={String(review.username)}
               date={String(review.timePosted)}
               review={String(review.textRev)}
