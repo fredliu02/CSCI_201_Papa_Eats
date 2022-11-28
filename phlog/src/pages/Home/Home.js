@@ -12,9 +12,10 @@ function Home() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const apiPost = async (username, password) => {
-    // if (username.length == 0 || password.length == 0) {
-    //   throw Error("empty values");
-    // }
+    if (username.length === 0 || password.length === 0) {
+      alert("Please enter your username and password");
+      return
+    }
     const response = await fetch(
       "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
         username,
@@ -31,12 +32,12 @@ function Home() {
       data = await response.json();
     } catch (err) {
       console.log(err);
-      alert("failed to log in: invalid username or password!");
+      alert("failed to log in: invalid username!");
       return;
     }
 
-    if (username !== data.username || password != data.password) {
-      alert("mismatch");
+    if (username !== data.username || password !== data.password) {
+      alert("failed to log in: incorrect password!");
     } else {
       navigate(`/${username}/Homepage`);
     }
@@ -122,10 +123,11 @@ function Home() {
                   </div>
                 </CardContent>
               </Card>
-              <Button 
+              <Button
                 onClick={() => navigate(`/:GUEST:/Homepage`)}
-                sx={{ marginLeft: "20%" }} 
-                variant="text">
+                sx={{ marginLeft: "20%" }}
+                variant="text"
+              >
                 Continue as Guest
               </Button>
             </div>

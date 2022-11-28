@@ -24,11 +24,6 @@ function ReviewCard(props) {
         sx={{
           backgroundColor: "#8cdcff",
         }}
-        action={
-          <IconButton onClick={null}>
-            <Person />
-          </IconButton>
-        }
         avatar={
           <Avatar sx={{ backgroundColor: "#6665DD" }}>
             {props.name.substring(0, 1)}

@@ -7,10 +7,13 @@ import {
   Typography,
   Avatar,
 } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 import IconButton from "@mui/material/IconButton";
 import { Person } from "@mui/icons-material";
 
 function RestaurantReview(props) {
+  const { username } = useParams();
+  const navigate = useNavigate();
   return (
     <Card
       sx={{
@@ -25,7 +28,17 @@ function RestaurantReview(props) {
           backgroundColor: "#8cdcff",
         }}
         action={
-          <IconButton onClick={null}>
+          <IconButton
+            onClick={() => {
+              if(username===props.name){
+                navigate(`/${username}/User`)
+              }
+              else{
+                navigate(`/${username}/${props.name}/OtherUser`)
+              }
+              }
+            }
+          >
             <Person />
           </IconButton>
         }
