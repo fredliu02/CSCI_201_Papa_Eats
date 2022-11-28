@@ -3,15 +3,15 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
-import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
+import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 
 function OtherUser() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -29,7 +29,7 @@ function OtherUser() {
       navigate("/Error");
       return;
     }
-    
+
     let data = null;
     const reviews = await fetch(
       `https://future-badge-366719.uw.r.appspot.com/api/users/reviews/${search}`,
@@ -52,7 +52,7 @@ function OtherUser() {
   };
 
   const verifySearch = async (search) => {
-    console.log(search)
+    console.log(search);
     const response = await fetch(
       "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
         search,
@@ -75,7 +75,7 @@ function OtherUser() {
   };
 
   const verifyUser = async (username) => {
-    console.log(username)
+    console.log(username);
     const response = await fetch(
       "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
         username,
@@ -98,67 +98,76 @@ function OtherUser() {
   };
 
   const numbers = [1, 2, 3, 4, 5];
-  const listItems = numbers.map((numbers) => (
-    // <li>
-    <RestaurantReview name="Frederick Liu" date="Sep 5, 2022" review="Food was yum." />
-    // </li>
-  ));
 
   const route = () => {
-    console.log(username)
-    if(username === ":GUEST:"){
-      console.log("in here")
-      navigate("/"+username + "/Guest")
-    }
-    else
-      navigate("/"+username+"/User")
-    
+    console.log(username);
+    if (username === ":GUEST:") {
+      console.log("in here");
+      navigate("/" + username + "/Guest");
+    } else navigate("/" + username + "/User");
+
     return;
-  }
+  };
 
   return (
     <div>
-      <AuthNavbar username={username}/>
-      <div style={{top: 65, left: 140, position: 'relative', display: 'inline'}}>
+      <AuthNavbar username={username} />
+      <div
+        style={{ top: 65, left: 140, position: "relative", display: "inline" }}
+      >
         <Box
           sx={{
-            width: '80%',
-            display: 'inline-block',
+            width: "80%",
+            display: "inline-block",
           }}
-          >
-          <UserSearchBar component="Box" searchQuery={searchQuery} setSearchQuery={setSearchQuery} username={username}/>
+        >
+          <UserSearchBar
+            component="Box"
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            username={username}
+          />
         </Box>
-        <Button component="Box" startIcon={<ArrowBackIcon/>} 
-            sx={{
-              top: 5,
-              right: 1050,
-              verticalAlign: 'top',
-              display: 'inline-block',
-            }}
-            onClick={() => {route();}}
-          >
-        </Button>
+        <Button
+          component="Box"
+          startIcon={<ArrowBackIcon />}
+          sx={{
+            top: 5,
+            right: 1050,
+            verticalAlign: "top",
+            display: "inline-block",
+          }}
+          onClick={() => {
+            route();
+          }}
+        ></Button>
       </div>
       <div>
         <Box
           sx={{
             top: 65,
             left: 140,
-            position:'relative',
-            width:'80%',
+            position: "relative",
+            width: "80%",
           }}
         >
-          <h1 style={{ width: "100%", textAlign: "center", fontSize: 45}}>{search}</h1>
+          <h1 style={{ width: "100%", textAlign: "center", fontSize: 45 }}>
+            {search}
+          </h1>
           <ul>
-          {reviews.map((review) => (
-            <RestaurantReview
-              name={String(review.username)}
-              date={String(review.timePosted)}
-              review={String(review.textRev)}
-            />
-          ))}
-        </ul>
-        <h2 style={{ width: "100%", textAlign: "center" }}>You've reached the end of {search}'s reviews. Search for other users to read their reviews! </h2>
+            {reviews.map((review) => (
+              <ReviewCard
+                restaurant={String(review.restaurant)}
+                name={String(review.username)}
+                date={String(review.timePosted)}
+                review={String(review.textRev)}
+              />
+            ))}
+          </ul>
+          <h2 style={{ width: "100%", textAlign: "center" }}>
+            You've reached the end of {search}'s reviews. Search for other users
+            to read their reviews!{" "}
+          </h2>
         </Box>
       </div>
     </div>

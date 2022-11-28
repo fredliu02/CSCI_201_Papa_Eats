@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import UserSearchBar from "../../Components/UserSearchbar/UserSearchbar";
-import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
+import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function User() {
@@ -26,7 +26,7 @@ function User() {
       navigate("/Error");
       return;
     }
-    
+
     let data = null;
     const reviews = await fetch(
       `https://future-badge-366719.uw.r.appspot.com/api/users/reviews/${username}`,
@@ -74,37 +74,41 @@ function User() {
   };
 
   const numbers = [1, 2, 3, 4, 5];
-  const listItems = numbers.map((numbers) => (
-    // <li>
-    <RestaurantReview name="Frederick Liu" date="Sep 5, 2022" review="Food was yum." />
-    // </li>
-  ));
-  
+
   return (
     <div>
-      <AuthNavbar username={username}/>
+      <AuthNavbar username={username} />
       <Box
         sx={{
-          top:65,
-          left:140,
-          position:'relative',
-          width:'80%',
+          top: 65,
+          left: 140,
+          position: "relative",
+          width: "80%",
         }}
       >
-        <UserSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} username={username}
-          sx={{bottom: 10}}
+        <UserSearchBar
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          username={username}
+          sx={{ bottom: 10 }}
         />
-        <h1 style={{ width: "100%", textAlign: "center", fontSize: 45}}>{username}</h1>
+        <h1 style={{ width: "100%", textAlign: "center", fontSize: 45 }}>
+          {username}
+        </h1>
         <ul>
           {reviews.map((review) => (
-            <RestaurantReview
+            <ReviewCard
+              restaurant={String(review.restaurant)}
               name={String(review.username)}
               date={String(review.timePosted)}
               review={String(review.textRev)}
             />
           ))}
         </ul>
-        <h2 style={{ width: "100%", textAlign: "center" }}>You've reached the end of your reviews. Write some more to see them here!</h2>
+        <h2 style={{ width: "100%", textAlign: "center" }}>
+          You've reached the end of your reviews. Write some more to see them
+          here!
+        </h2>
       </Box>
     </div>
   );
