@@ -2,9 +2,9 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 import { Button } from "@mui/material";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
+import RestaurantReview from "../../Components/RestaurantReview/RestaurantReview";
 
 function RestaurantPage() {
   const { username, restaurant } = useParams();
@@ -113,7 +113,7 @@ function RestaurantPage() {
 
   return (
     <div>
-      <AuthNavbar username={username}/>
+      <AuthNavbar username={username} />
       <div
         style={{
           marginTop: "5%",
@@ -127,7 +127,7 @@ function RestaurantPage() {
 
         <ul>
           {reviews.map((review) => (
-            <ReviewCard
+            <RestaurantReview
               name={String(review.username)}
               date={String(review.timePosted)}
               review={String(review.textRev)}

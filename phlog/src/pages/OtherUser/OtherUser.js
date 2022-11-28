@@ -75,10 +75,9 @@ function OtherUser() {
   };
 
   const verifyUser = async (username) => {
-    console.log(username)
-    if(username === ":GUEST:")
-      return true;
-      
+    console.log(username);
+    if (username === ":GUEST:") return true;
+
     const response = await fetch(
       "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
         username,
@@ -160,7 +159,7 @@ function OtherUser() {
           <ul>
             {reviews.map((review) => (
               <ReviewCard
-                restaurant={String(review.restaurant)}
+                restaurant={String(review.restaurantName)}
                 name={String(review.username)}
                 date={String(review.timePosted)}
                 review={String(review.textRev)}

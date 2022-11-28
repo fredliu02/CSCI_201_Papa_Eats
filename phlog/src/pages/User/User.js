@@ -98,7 +98,7 @@ function User() {
         <ul>
           {reviews.map((review) => (
             <ReviewCard
-              restaurant={String(review.restaurant)}
+              restaurant={String(review.restaurantName)}
               name={String(review.username)}
               date={String(review.timePosted)}
               review={String(review.textRev)}
