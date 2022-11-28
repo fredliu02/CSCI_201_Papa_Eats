@@ -38,7 +38,7 @@ function Guest() {
             Guest
           </Grid>
           <Grid signup>
-            You aren't signed in right now. Click <Link to="/"> here</Link> to sign up and make your own reviews! Or, use the search to find other users and their reviews.
+            You aren't signed in right now. Click <Link to="/SignUp"> here</Link> to sign up and make your own reviews! Or, use the search to find other users and their reviews.
           </Grid>
         </Grid>
       </Box>
