@@ -55,15 +55,7 @@ function HomePage() {
     <div>
       <AuthNavbar username={username}/>
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
-        <Grid container>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
-            <h1> --- search bar goes here ---</h1>
-          </Grid>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
-            <h4>Or... Pick a Cuisine!</h4>
-          </Grid>
-        </Grid>
-
+        <h2 style={{textAlign: "center"}}>  Pick a cuisine below! </h2>
         <Grid container>
           {/* display 1st row of images */}
 

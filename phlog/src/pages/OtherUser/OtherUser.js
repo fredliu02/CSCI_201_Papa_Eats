@@ -75,7 +75,10 @@ function OtherUser() {
   };
 
   const verifyUser = async (username) => {
-    console.log(username);
+    console.log(username)
+    if(username === ":GUEST:")
+      return true;
+      
     const response = await fetch(
       "https://future-badge-366719.uw.r.appspot.com/api/users/username/" +
         username,
