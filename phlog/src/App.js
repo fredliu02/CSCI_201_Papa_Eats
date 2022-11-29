@@ -18,6 +18,7 @@ import ErrorPage from "./Pages/Errorpage/ErrorPage";
 import User from "./Pages/User/User";
 import Guest from "./Pages/Guest/Guest";
 import OtherUser from "./Pages/OtherUser/OtherUser";
+import ReviewPage from "./Pages/ReviewPage/ReviewPage";
 
 function App() {
   return (
@@ -44,6 +45,12 @@ function App() {
         <Route exact path ="/:username/Guest" element={<Guest />} />
         <Route exact path ="/:username/:search/OtherUser" element={<OtherUser />} />
         <Route exact path="/Error" element={<ErrorPage />} />
+        <Route exact path="/Review" element={<ReviewPage />} />
+        <Route
+          exact
+          path="/:username/R/:restaurant/Review"
+          element={<ReviewPage />}
+        />
       </Routes>
     </div>
   );
