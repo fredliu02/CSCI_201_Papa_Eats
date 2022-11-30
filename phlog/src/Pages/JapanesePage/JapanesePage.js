@@ -7,7 +7,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Grid } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router-dom"
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";

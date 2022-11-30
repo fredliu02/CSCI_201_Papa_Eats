@@ -2,7 +2,6 @@ import * as React from 'react';
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
 
 const UserSearchbar = ({searchQuery, setSearchQuery, username}) => {
     const navigate = useNavigate();

@@ -3,11 +3,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Card, CardContent, Grid } from "@mui/material";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import User from "../User/User";
-
-
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 function SignUp() {

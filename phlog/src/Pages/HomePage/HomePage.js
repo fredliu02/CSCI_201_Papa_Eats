@@ -1,11 +1,8 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import { Card, CardContent, Grid } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { Grid } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
 import AuthNavbar from "../../Components/AuthNavbar/AuthNavbar";
 
 function HomePage() {

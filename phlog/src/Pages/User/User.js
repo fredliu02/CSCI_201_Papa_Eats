@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -92,9 +92,16 @@ function User() {
           username={username}
           sx={{ bottom: 10 }}
         />
+
         <h1 style={{ width: "100%", textAlign: "center", fontSize: 45 }}>
           {username}
         </h1>
+        <Box textAlign='center' sx={{marginTop: -3}}>
+          <Button onClick={() => {navigate("/")}} variant="contained" sx={{}}>
+              LOG OUT!
+          </Button>
+        </Box>
+       
         <ul>
           {reviews.map((review) => (
             <ReviewCard
