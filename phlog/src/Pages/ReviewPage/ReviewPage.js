@@ -30,7 +30,7 @@ function ReviewPage() {
     const [usrdata, setUsrData] = useState('');
 
 
-    const showTime = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate()+" "
+    const showTime = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "
         + date.getHours()
         + ':' + date.getMinutes()
         + ":" + date.getSeconds();
@@ -111,6 +111,10 @@ async function fetchUser(){
 
     async function handleClick() {
         //console.log(this.state.val);
+        if(revText==""){
+          alert("Please enter some text.");
+          return;
+        }
         console.log(JSON.stringify(jsonData));
         console.log("testing console1");
         var jsonData = {
@@ -185,7 +189,7 @@ async function fetchUser(){
         console.log(JSON.stringify(jsonData));
         //                 setData(json);
         })
-
+      alert("Review successfully posted!");
     navigate(-1); //navigate back to restaurant page
   }
 
