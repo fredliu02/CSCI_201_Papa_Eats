@@ -41,11 +41,14 @@ function App() {
         <Route exact path="/:username/Indian" element={<IndianPage />} />
         <Route exact path="/:username/Coffee" element={<CoffeePage />} />
         <Route exact path="/:username/Other" element={<OtherPage />} />
-        <Route exact path ="/:username/User" element={<User />} />
-        <Route exact path ="/:username/Guest" element={<Guest />} />
-        <Route exact path ="/:username/:search/OtherUser" element={<OtherUser />} />
+        <Route exact path="/:username/User" element={<User />} />
+        <Route exact path="/:username/Guest" element={<Guest />} />
+        <Route
+          exact
+          path="/:username/:search/OtherUser"
+          element={<OtherUser />}
+        />
         <Route exact path="/Error" element={<ErrorPage />} />
-        <Route exact path="/Review" element={<ReviewPage />} />
         <Route
           exact
           path="/:username/R/:restaurant/Review"

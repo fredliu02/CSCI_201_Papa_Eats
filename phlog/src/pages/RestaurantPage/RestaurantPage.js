@@ -58,7 +58,7 @@ function RestaurantPage() {
     }
     setReviews(data);
   };
-  const actions = (username) => {
+  const actions = (username, restaurant) => {
     if (username === ":GUEST:") {
       return (
         <div>
@@ -78,7 +78,7 @@ function RestaurantPage() {
         <Button
           variant="contained"
           onClick={() => {
-            navigate(`/${username}/Homepage`);
+            navigate(`/${username}/R/${restaurant}/Review`);
           }}
         >
           Write a review
@@ -122,7 +122,7 @@ function RestaurantPage() {
       >
         <h1 style={{ width: "100%", textAlign: "center" }}>{restaurant}</h1>
         <div style={{ width: "100%", textAlign: "center" }}>
-          {actions(username)}
+          {actions(username, restaurant)}
         </div>
 
         <ul>
