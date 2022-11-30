@@ -39,6 +39,9 @@ function SignUp() {
         headers: new Headers({"Content-Type": "application/x-www-form-urlencoded"}),
         body: strForm // body data type must match "Content-Type" header
       });
+      alert("New user successfully registered!");
+      navigate(-1);
+
     // fetch("https://jsonplaceholder.typicode.com/posts")
     
     // .then((response) => response)
