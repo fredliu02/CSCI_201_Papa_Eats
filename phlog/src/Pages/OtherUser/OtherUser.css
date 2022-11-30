@@ -1,0 +1,7 @@
+.TopDiv {
+    display: flex;
+    flex-direction: row;
+  }
+.ChildDiv{
+    display: inline-block;
+}
