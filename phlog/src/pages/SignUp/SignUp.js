@@ -4,6 +4,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Card, CardContent, Grid } from "@mui/material";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import User from "../User/User";
+
 
 
 
@@ -15,6 +18,41 @@ function SignUp() {
     // 👇️ navigate to /contacts
     navigate('/');
   };
+  const [Username, setUserName] = useState('');
+  const [Password, setPassword] = useState('');
+
+ function handleClick() {
+    console.log(Username);
+    console.log(Password);
+    console.log("end console test1");
+    var jsonData = {
+        "username":Username,
+        "password":Password
+        }
+    let formData = new FormData();
+    formData.append('username', Username);
+    formData.append('password', Password);
+    const strForm = "username="+Username+"&password="+Password
+    //console.log(this.state.val);
+     fetch("https://future-badge-366719.uw.r.appspot.com/process_register",
+    {  // Enter your IP address here
+
+        method: 'POST', 
+        //mode: 'cors', 
+        headers: new Headers({"Content-Type": "application/x-www-form-urlencoded"}),
+        body: strForm // body data type must match "Content-Type" header
+      });
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    
+    // .then((response) => response)
+    // .then((json) => {
+    // console.log(formData);
+    // //                 setData(json);
+    // })
+
+//navigate(-1); 
+//navigateToHome();
+}
 
     return (
         <div>
@@ -53,6 +91,7 @@ function SignUp() {
                                         id="outlined-basic"
                                         label="Username"
                                         variant="outlined"
+                                        onChange={e => setUserName(e.target.value)}
                                     />
                                     <TextField
                                         sx={{ marginBottom: "5%" }}
@@ -66,6 +105,7 @@ function SignUp() {
                                         id="outlined-basic"
                                         label="Confirm Password"
                                         variant="outlined"
+                                        onChange={e => setPassword(e.target.value)}
                                     />
 
                                     <div
@@ -73,7 +113,7 @@ function SignUp() {
                                             marginBottom: "5%",
                                         }}
                                     >
-                                        <Button variant="contained">Sign Up!</Button>
+                                        <Button onClick = {handleClick} variant="contained">Sign Up!</Button>
                                     </div>
 
 
