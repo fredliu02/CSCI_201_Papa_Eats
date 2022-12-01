@@ -54,7 +54,7 @@ function Home() {
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <h3>
-              Phlog strives to bring people together through food, connect with
+              Papa Eats strives to bring people together through food, connect with
               your friends to discover restaurants in your area and see the
               restaurants they love.
             </h3>
