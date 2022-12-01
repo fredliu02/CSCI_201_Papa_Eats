@@ -50,7 +50,7 @@ function Home() {
       <Box sx={{ flexGrow: 1, margin: "10%" }}>
         <Grid container spacing={1}>
           <Grid item xs={12} style={{ textAlign: "center" }}>
-            <h1>Welcome to Phlog!</h1>
+            <h1>Welcome to Papa Eats!</h1>
           </Grid>
           <Grid item xs={12} style={{ textAlign: "center" }}>
             <h3>

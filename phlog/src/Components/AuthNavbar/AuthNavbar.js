@@ -36,7 +36,7 @@ function AuthNavbar({username}) {
               navigate("/" + username + "/HomePage")
             }}
           >
-            Phlog
+            Papa Eats
           </Button>
         </AppBar>
       </Box>

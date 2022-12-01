@@ -25,7 +25,7 @@ function Navbar() {
               window.location.replace("/");
             }}
           >
-            Phlog
+            Papa Eats
           </Button>
         </AppBar>
       </Box>
