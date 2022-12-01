@@ -17,15 +17,21 @@ function SignUp() {
   };
   const [Username, setUserName] = useState('');
   const [Password, setPassword] = useState('');
+  const [confPassword, setConfPassword] = useState('');
 
  function handleClick() {
     console.log(Username);
     console.log(Password);
+    console.log(confPassword);
     console.log("end console test1");
     var jsonData = {
         "username":Username,
         "password":Password
         }
+    if (Password != confPassword){
+        alert("Passwords do not match.");
+        return;
+    }
     let formData = new FormData();
     formData.append('username', Username);
     formData.append('password', Password);
@@ -98,6 +104,7 @@ function SignUp() {
                                         id="outlined-basic"
                                         label="Password"
                                         variant="outlined"
+                                        onChange={e => setPassword(e.target.value)}
                                     />
 
                                     <TextField
@@ -105,7 +112,7 @@ function SignUp() {
                                         id="outlined-basic"
                                         label="Confirm Password"
                                         variant="outlined"
-                                        onChange={e => setPassword(e.target.value)}
+                                        onChange={e => setConfPassword(e.target.value)}
                                     />
 
                                     <div
